@@ -92,7 +92,7 @@ int main(){
             }
             
         }
-        //cout<<ans<<" ";
+        //number of subseqence we need to color yellow
         f=0,g=0;
         for(int i=0;i<n;++i){
             if(P[i].size()){
@@ -129,7 +129,7 @@ int main(){
                 }
             }
         }
-        //cout<<ans<<" ";
+        // number of sequence we need to color blue
         f=0,g=0;
         for(int i=0;i<n;++i){
             if(P[i].size()){
