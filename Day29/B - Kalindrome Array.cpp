@@ -36,7 +36,7 @@ int main(){
         // it will be either A[i] or A[n-1-i] where A[i]!=A[n-1-i]
         int f=0;
         for(int i=0;i<n/2;++i){
-            if(A[i]!=A[n-1]){
+            if(A[i]!=A[n-1-i]){
                 if(check(A[i],A)||check(A[n-1-i],A)){
                     break;
                 }
