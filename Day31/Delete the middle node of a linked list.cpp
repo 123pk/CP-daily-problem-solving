@@ -4,29 +4,44 @@ Contest:- Leetcode Weekly contest 270
 Approach :- first take all the elemnts of linked list and store in vector now remove the middle element and create a new linked list of those array of elements and return the head
             of this new linked list
 */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
-    vector<int> findEvenNumbers(vector<int>& digits) {
-        map<int,int>P;
-        for(auto &x:digits)P[x]++;
+    ListNode* deleteMiddle(ListNode* head) {
+        vector<int>temp;
+        ListNode*ans=NULL;
         
-        vector<int>ans;
+        while(head){
+            temp.push_back(head->val);
+            head=head->next;
+        }
         
-        for(int i=100;i<=998;i+=2){
-            //check for the frequency of values
-            vector<int>z(10);
-            int temp=i;
-            while(temp){
-                z[temp%10]++;
-                temp/=10;
+        int n=temp.size();
+        n/=2;
+        temp.erase(temp.begin()+n);
+        
+        ListNode* start = new ListNode();
+        for(int i=0;i<temp.size();++i){
+            ListNode* vl = new ListNode();
+            vl->val=temp[i];
+            
+            if(i==0){
+               start = vl;
+               ans = start;
             }
-            int f=0;
-            for(int i=0;i<=9;++i){
-                if(P[i]<z[i]){
-                    f=1;break;
-                }
+            else{
+                start->next = vl;
+                start=start->next;
             }
-            if(f==0)ans.push_back(i);
         }
         
         return ans;
