@@ -1,7 +1,9 @@
 /*
 Platform :- Codeforces
 Contest :- Codeforces Educational Round 119
+Approach :- Area of triangle is (1/2 * base * height ) and we need to print ( base*height) , so we choose all the largest base in all the four sides and multiply with corresponding
 
+            height which is (h) when we are on horizontal base and (w) when we have vertical base.
 */
 #include<bits/stdc++.h>
 using namespace std;
