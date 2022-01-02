@@ -3,10 +3,7 @@ Platform :- Codeforces
 Contest :- Educational Round 120
 Approach :- 
 */
-/**
- *    author:  tourist
- *    created: 27.12.2021 17:38:21       
-**/
+
 #include <bits/stdc++.h>
 
 using namespace std;
