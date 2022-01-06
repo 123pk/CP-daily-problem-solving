@@ -28,7 +28,7 @@ int main(){
         
         long long ans=0;
         int f=0;
-        //finding prime factors of n
+        //finding prime factors of m
         for(auto &x:z){
            
             int f=0;
