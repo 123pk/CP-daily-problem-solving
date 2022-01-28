@@ -1,3 +1,14 @@
+/*
+Platform :- Codeforces
+Contest :- Codeforces Round 768 Div 2
+Approach :- The maximum value possible for a given 'n' is "sum of even terms till  0+2+4+...n-2",
+             for values less than (n-1) we can always make first pair with (n-1,k) and other be greedily such that their sum is 0.
+             For values >=(n-1) , we try by making the maximum value possible which is' [ val = min( k-k%n , n-2) ]' then we try val-2 and so on till the value 
+             of 'k' is not '0' we have handle the case of '1' carefully.
+             After acheiving the sum if we have some values left then we try to map with them the highest values which will result in '0' when we do bitwise and.
+            
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
