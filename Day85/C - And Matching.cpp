@@ -1,8 +1,7 @@
-#include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-int main() {
+int main(){
     int t;
     cin>>t;
     
@@ -11,11 +10,14 @@ int main() {
         cin>>n>>k;
         
         int lim = (n/2)-1;
-        int val = ((lim-1)*2 + 4)/2;
-        val*=lim;
-        if(k>val)cout<<"-1\n";
+        int val = ((lim-1)*2 + 4)*lim;
+        val/=2;
+        
+        if(val<k)cout<<"-1\n";
         else{
-            int z = n/2;
+            
+            if(k<(n-1)){
+                int z = n/2;
             vector<pair<int,int>>temp;
             temp.push_back({0,n-1});
             int val = n-2;
@@ -38,7 +40,66 @@ int main() {
                 }
             }
             for(auto &x:temp)cout<<x.first<<" "<<x.second<<"\n";
+            continue;
+            }
+            
+            set<int>avail;
+            for(int i=0;i<n;++i)avail.insert(i);
+           
+             
+               
+            int d = k-(k%2);
+            d = min(d,n-2);
+            
+            while(k){
+               avail.erase(d+1);
+               avail.erase(d);
+               cout<<(d+1)<<" "<<d<<"\n";
+               k-=d;
+               d-=2;
+               if(k==1){
+                   auto it = avail.rbegin();
+                   cout<<(*it)<<" "<<1<<"\n";
+                   avail.erase(*it);
+                   avail.erase(1);
+                   k=0;
+               }
+               else{
+                   d = min(d,k-(k%2));
+               }
+               
+            }
+            
+            string ss;
+           // for(auto &x:avail)cout<<x<<" ";
+          //  cout<<" -- >\n";
+            while(avail.size()){
+                auto it = avail.rbegin();
+                int some = 0;
+                string temp = bitset<16>(*it).to_string();
+                int f=0;
+                ss="";
+                for(int i=0;i<16;++i){
+                    if(f){
+                        if(temp[i]=='0')ss+='1';
+                        else ss+='0';
+                    }
+                    else {
+                        if(temp[i]=='1')f=1;
+                    }
+                }
+                
+                reverse(ss.begin(),ss.end());
+                for(int i=0;i<ss.size();++i){
+                    if(ss[i]=='1')some+=(1<<i);
+                }
+                
+                auto it2 = avail.lower_bound(some);
+                if((*it2)>some || (*it2)==(*it))it2--;
+                cout<<(*it)<<" "<<(*it2)<<"\n";
+                avail.erase(*it);
+                avail.erase(*it2);
+            }
         }
     }
-     
 }
