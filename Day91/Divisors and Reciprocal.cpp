@@ -2,6 +2,8 @@
 Platform :- Codechef
 Contest :- Codechef Starters ( 2 feb 2022 ) 
 Approach :- We should know that [ f(n) = sum of reciprocal of divisors of any number 'n'  ] so "sum of divisors 'X' = n*f(n) 
+            We are given A/B , which is equal to ( X/n ) , so [ n = X*b/a ]  , but you should also take care that 'n'< X , if this does not hold then there is no such value
+            for given constraints
 */
 #include<bits/stdc++.h>
 using namespace std;
